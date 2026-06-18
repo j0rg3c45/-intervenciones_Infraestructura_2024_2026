@@ -1,0 +1,4 @@
+﻿anio,archivo,registros,columnas,crs_epsg,tipo_geometria,nulos_totales,duplicados_tabulares,duplicados_espaciales,redundancia_total
+2024,Infraestructura_2024.shp,323,35,4326,['LineString'],2621,0,0,0
+2025,2025_Consolidado.shp,677,34,6249,['LineString'],7084,2,0,0
+2026,2026_Consolidado_proyect.shp,199,37,4326,['LineString'],2233,0,0,0
