@@ -87,4 +87,24 @@ Para cada archivo analizado, ejecutar y reportar los siguientes puntos de contro
 
 ---
 
-**Estado del Agente:** Inicializado, con politicas de Git configuradas y tarea de EDA definida. En espera de orden para comenzar la revision.
+---
+
+## 8. Graficos y Visualizaciones Generadas
+
+Script: `scripts/graficos_eda_infraestructura.py`
+
+Archivos exportados en `output/`:
+
+| Archivo                              | Contenido                                                    |
+|--------------------------------------|--------------------------------------------------------------|
+| grafico_registros_por_ano.png        | Barras con total de intervenciones por ano                   |
+| grafico_tipo_intervencion.png        | Barras horizontales con tipos de intervencion por ano        |
+| grafico_estado_obras.png             | Tortas con distribucion de estado de obras por ano           |
+| grafico_nulidad_campos.png           | Heatmap de porcentaje de nulidad por campo y ano             |
+| grafico_top_comunas.png              | Top 10 comunas con mas intervenciones por ano                |
+| grafico_grupo_normativo.png          | Distribucion por grupo normativo y ano                       |
+| tabla_resumen_consolidada.txt        | Tabla comparativa de metricas clave entre los 3 anos         |
+
+---
+
+**Estado del Agente:** EDA completado, graficos generados y exportados. En espera de nuevas instrucciones.

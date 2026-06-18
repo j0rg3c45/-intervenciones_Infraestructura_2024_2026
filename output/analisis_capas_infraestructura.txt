@@ -1,0 +1,258 @@
+==========================================================================================
+ ANALISIS DE CAPAS - INFRAESTRUCTURA 2024-2026
+ Objetivo: Identificar datos, temporalidad y cubrimiento
+ para definir requerimientos formales de suministro
+==========================================================================================
+
+
+1. INFORMACION GENERAL DE LAS CAPAS
+--------------------------------------------------
++------------+--------------------------+----------------------+------------------------------+
+| Metrica    | 2024                     | 2025                 | 2026                         |
++------------+--------------------------+----------------------+------------------------------+
+| Archivo    | Infraestructura_2024.shp | 2025_Consolidado.shp | 2026_Consolidado_proyect.shp |
+| Registros  | 323                      | 677                  | 199                          |
+| Columnas   | 35                       | 34                   | 37                           |
+| CRS (EPSG) | 4326                     | 6249                 | 4326                         |
+| CRS Nombre | WGS 84                   | MAGNA-SIRGAS/Cali    | WGS 84                       |
+| Geometria  | LineString               | LineString           | LineString                   |
+| CRS Valido | Si                       | REVISAR              | Si                           |
++------------+--------------------------+----------------------+------------------------------+
+
+
+2. CUBRIMIENTO ESPACIAL (Bounding Box)
+--------------------------------------------------
++-------------+------------+-------------------+------------+
+| Coordenada  | 2024       | 2025 (proyectado) | 2026       |
++-------------+------------+-------------------+------------+
+| Min X (Lon) | -76.660017 | 1046369.83        | -76.636141 |
+| Min Y (Lat) | 3.306021   | 857913.35         | 3.336163   |
+| Max X (Lon) | -76.462219 | 1068038.45        | -76.464416 |
+| Max Y (Lat) | 3.520078   | 881949.38         | 3.493317   |
++-------------+------------+-------------------+------------+
+
+  Nota: 2025 esta en coordenadas planas (EPSG:6249). Requiere reproyeccion
+  para comparar con 2024 y 2026 que estan en geograficas (EPSG:4326).
+
+
+3. TEMPORALIDAD
+--------------------------------------------------
++---------------------+-------------------------+-------------------------+-------------------------+
+| Campo               | 2024                    | 2025                    | 2026                    |
++---------------------+-------------------------+-------------------------+-------------------------+
+| Valor campo 'ano'   | 2024                    | 2025                    | 2026                    |
+| fecha_inic          | 2024-02-09 a 2025-01-14 | 2025-01-02 a 2025-12-30 | 2026-01-06 a 2026-05-06 |
+| fecha_fin           | 2024-02-09 a 2025-01-17 | 2025-01-03 a 2026-07-21 | 2026-01-12 a 2026-05-07 |
+| Registros con fecha | 322 de 323              | 677 de 677              | 178 de 199              |
++---------------------+-------------------------+-------------------------+-------------------------+
+
+
+4. TIPOS DE INTERVENCION (tipo_inter)
+--------------------------------------------------
++--------------------------------------------+------+------+------+
+| Tipo de Intervencion                       | 2024 | 2025 | 2026 |
++--------------------------------------------+------+------+------+
+| Adoquin                                    | -    | 13   | -    |
+| Bacheo                                     | 128  | 329  | 143  |
+| Cicloinfraestructura                       | 1    | -    | -    |
+| Conformación Vial                          | -    | 1    | -    |
+| Construcción De Cunetas                    | -    | 11   | -    |
+| Construcción Huellas Vehiculares           | -    | 10   | -    |
+| Construcción Huellas Vehiculares Y Cunetas | -    | 8    | -    |
+| Construcción Obras De Drenaje              | -    | 2    | -    |
+| Fresado                                    | 22   | 67   | 15   |
+| Mantenimiento Vía Urbana                   | 96   | 89   | -    |
+| Nivelación                                 | 2    | -    | 3    |
+| Pavimento                                  | 14   | 57   | 27   |
+| Recarpeteo                                 | 60   | 90   | 11   |
+| TOTAL                                      | 323  | 677  | 199  |
++--------------------------------------------+------+------+------+
+
+
+5. ESTADO DE LAS OBRAS
+--------------------------------------------------
++--------------+--------------+-------------+--------------+
+| Estado       | 2024         | 2025        | 2026         |
++--------------+--------------+-------------+--------------+
+| En Ejecución | -            | 7 (1.0%)    | -            |
+| Finalizado   | 323 (100.0%) | 668 (98.7%) | 199 (100.0%) |
+| No Iniciado  | -            | 2 (0.3%)    | -            |
++--------------+--------------+-------------+--------------+
+
+
+6. TOP 10 COMUNAS CON MAS INTERVENCIONES
+--------------------------------------------------
+
+  Ano 2024:
++-----------+----------------+-------------+
+| Comuna    | Intervenciones | % del total |
++-----------+----------------+-------------+
+| Comuna 02 | 48             | 14.9%       |
+| Comuna 19 | 46             | 14.2%       |
+| Comuna 17 | 42             | 13.0%       |
+| Comuna 03 | 37             | 11.5%       |
+| Comuna 10 | 20             | 6.2%        |
+| Comuna 11 | 14             | 4.3%        |
+| Comuna 22 | 13             | 4.0%        |
+| Comuna 07 | 10             | 3.1%        |
+| Comuna 16 | 9              | 2.8%        |
+| Comuna 13 | 8              | 2.5%        |
++-----------+----------------+-------------+
+
+  Ano 2025:
++-----------+----------------+-------------+
+| Comuna    | Intervenciones | % del total |
++-----------+----------------+-------------+
+| Comuna 02 | 104            | 15.4%       |
+| Comuna 17 | 83             | 12.3%       |
+| Comuna 22 | 62             | 9.2%        |
+| Comuna 08 | 50             | 7.4%        |
+| Comuna 19 | 32             | 4.7%        |
+| Comuna 07 | 30             | 4.4%        |
+| Comuna 03 | 27             | 4.0%        |
+| Comuna 09 | 22             | 3.2%        |
+| Comuna 16 | 21             | 3.1%        |
+| Comuna 11 | 18             | 2.7%        |
++-----------+----------------+-------------+
+
+  Ano 2026:
++-------------+----------------+-------------+
+| Comuna      | Intervenciones | % del total |
++-------------+----------------+-------------+
+| Comuna 02   | 68             | 34.2%       |
+| Comuna 17   | 28             | 14.1%       |
+| Comuna 19   | 19             | 9.5%        |
+| Los Andes   | 16             | 8.0%        |
+| Comuna 07   | 10             | 5.0%        |
+| Comuna 04   | 10             | 5.0%        |
+| Comuna 06   | 9              | 4.5%        |
+| La Buitrera | 7              | 3.5%        |
+| Comuna 22   | 6              | 3.0%        |
+| Comuna 03   | 6              | 3.0%        |
++-------------+----------------+-------------+
+
+
+7. GRUPO NORMATIVO (GRUPO_NORM)
+--------------------------------------------------
++-----------------------------------------+------+------+------+
+| Grupo Normativo                         | 2024 | 2025 | 2026 |
++-----------------------------------------+------+------+------+
+| Grupo Operativo                         | 227  | 515  | 175  |
+| Grupo Operativo (Cuadrilla 2.0)         | -    | 41   | 24   |
+| Tercerizado                             | 72   | 65   | -    |
+| Tercerizado (Presupuesto Participativo) | 24   | 56   | -    |
++-----------------------------------------+------+------+------+
+
+
+8. CALIDAD DE DATOS - PORCENTAJE DE NULIDAD POR CAMPO
+--------------------------------------------------
++------------+-------------+-------------+-------------+-------------+
+| Campo      | % Nulo 2024 | % Nulo 2025 | % Nulo 2026 | Diagnostico |
++------------+-------------+-------------+-------------+-------------+
+| referencia | 70.3%       | 82.1%       | 100.0%      | REVISAR     |
+| referenc_1 | 70.3%       | 82.1%       | 100.0%      | REVISAR     |
+| fuente_fin | 100.0%      | 100.0%      | 100.0%      | ELIMINAR    |
+| nombre_up_ | 29.7%       | 17.9%       | 0.0%        | OK          |
+| fecha_inic | 0.3%        | 0.0%        | 10.6%       | OK          |
+| fecha_fin  | 0.3%        | 0.0%        | 11.6%       | OK          |
+| fecha_inau | 100.0%      | 100.0%      | 100.0%      | ELIMINAR    |
+| lat        | 0.0%        | 100.0%      | 100.0%      | REVISAR     |
+| lon        | 0.0%        | 100.0%      | 100.0%      | REVISAR     |
+| plataforma | 70.3%       | 82.1%       | 100.0%      | REVISAR     |
+| url_proces | 70.3%       | 82.1%       | 100.0%      | REVISAR     |
+| clase_up   | 100.0%      | 100.0%      | 100.0%      | ELIMINAR    |
+| descripcio | 100.0%      | 100.0%      | 100.0%      | ELIMINAR    |
+| Observacio | 100.0%      | 100.0%      | 100.0%      | ELIMINAR    |
++------------+-------------+-------------+-------------+-------------+
+
+
+9. DUPLICIDAD
+--------------------------------------------------
++--------------------------------+------+------+------+
+| Tipo de Duplicado              | 2024 | 2025 | 2026 |
++--------------------------------+------+------+------+
+| Duplicados tabulares           | 0    | 2    | 0    |
+| Duplicados espaciales          | 0    | 0    | 0    |
+| Redundancia total (geom+atrib) | 0    | 0    | 0    |
++--------------------------------+------+------+------+
+
+
+10. ESQUEMA COMPARATIVO DE COLUMNAS
+--------------------------------------------------
++------------+------+------+------+
+| Columna    | 2024 | 2025 | 2026 |
++------------+------+------+------+
+| DIRECCIÓN  | -    | -    | Si   |
+| Dirección  | Si   | -    | -    |
+| GRUPO      | -    | Si   | Si   |
+| GRUPO_NORM | Si   | Si   | Si   |
+| ID         | -    | Si   | Si   |
+| ID2        | Si   | -    | -    |
+| ID_2       | -    | -    | Si   |
+| ID_SHAPE   | -    | Si   | Si   |
+| Id         | Si   | -    | -    |
+| MERGE_SRC  | Si   | -    | -    |
+| Observacio | Si   | Si   | Si   |
+| Shape_Le_1 | -    | -    | Si   |
+| Shape_Leng | Si   | Si   | Si   |
+| avance_obr | Si   | Si   | Si   |
+| año        | Si   | Si   | Si   |
+| barrio_ver | Si   | Si   | Si   |
+| bpin       | Si   | Si   | Si   |
+| cantidad   | Si   | Si   | Si   |
+| clase_up   | Si   | Si   | Si   |
+| comuna_cor | Si   | Si   | Si   |
+| descripcio | Si   | Si   | Si   |
+| direccion  | Si   | Si   | Si   |
+| estado     | Si   | Si   | Si   |
+| fecha_fin  | Si   | Si   | Si   |
+| fecha_inau | Si   | Si   | Si   |
+| fecha_inic | Si   | Si   | Si   |
+| fuente_fin | Si   | Si   | Si   |
+| identifica | Si   | Si   | Si   |
+| lat        | Si   | Si   | Si   |
+| lon        | Si   | Si   | Si   |
+| nombre_cen | Si   | Si   | Si   |
+| nombre_up  | Si   | Si   | Si   |
+| nombre_up_ | Si   | Si   | Si   |
+| plataforma | Si   | Si   | Si   |
+| presupuest | Si   | Si   | Si   |
+| referenc_1 | Si   | Si   | Si   |
+| referencia | Si   | Si   | Si   |
+| tipo_equip | Si   | Si   | Si   |
+| tipo_inter | Si   | Si   | Si   |
+| unidad     | Si   | Si   | Si   |
+| url_proces | Si   | Si   | Si   |
++------------+------+------+------+
+
+
+==========================================================================================
+ SINTESIS Y RECOMENDACIONES PARA SOLICITUD FORMAL
+==========================================================================================
+
+PROBLEMAS DETECTADOS:
++----+------------------------------------------------------------------+
+| #  | Problema                                                         |
++----+------------------------------------------------------------------+
+| 1  | CRS no homogeneo: 2025 en EPSG:6249, resto en EPSG:4326         |
+| 2  | Esquema de columnas variable entre anos (35, 34, 37 columnas)    |
+| 3  | 5 campos 100% vacios en todos los anos (sin informacion)         |
+| 4  | Campos lat/lon vacios en 2025 y 2026 (redundantes con geometria) |
+| 5  | Campos referencia/plataforma/url con >70% nulidad                |
+| 6  | 2 registros duplicados tabulares en 2025                         |
+| 7  | 21 registros sin fecha de inicio en 2026                         |
++----+------------------------------------------------------------------+
+
+RECOMENDACIONES:
++----+------------------------------------------------------------------+
+| #  | Requerimiento para solicitud formal                              |
++----+------------------------------------------------------------------+
+| 1  | Entregar todas las capas en CRS unico: EPSG:4326 o EPSG:9377    |
+| 2  | Definir y mantener esquema fijo de atributos para todos los anos |
+| 3  | Entregar diccionario de datos oficial con definicion de campos   |
+| 4  | Eliminar campos sin uso o llenarlos obligatoriamente             |
+| 5  | Eliminar campos lat/lon si la geometria ya contiene la posicion  |
+| 6  | Validar datos antes de entrega: sin duplicados, fechas completas |
+| 7  | Definir periodicidad de entrega (mensual, trimestral, semestral) |
+| 8  | Entregar en formato .zip con todos los componentes del Shapefile |
++----+------------------------------------------------------------------+
