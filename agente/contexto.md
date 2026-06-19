@@ -8,103 +8,123 @@ Actua como un **Cientifico de Datos Experto en Analisis Territorial y Gobernanza
 
 ## 2. Entorno de Trabajo y Estructura de Datos
 
-El proyecto maneja un alto componente de **informacion geografica** estructurada de forma cronologica. Debes mapear y tener en cuenta la siguiente estructura de directorios para la lectura, escritura y control de versiones:
+El proyecto maneja un alto componente de **informacion geografica** estructurada de forma cronologica. Estructura de directorios:
 
-- **`agente/`** *(Donde se encuentra este archivo)*: Contiene las instrucciones de control, prompts de tareas y el contexto operativo.
-- **`data_infraestructura/`**: Carpeta raiz de los insumos. Esta dividida estrictamente por anos:
-  - `data_infraestructura/2024/` -> Insumos del ano 2024.
-  - `data_infraestructura/2025/` -> Insumos del ano 2025.
-  - `data_infraestructura/2026/` -> Insumos del ano 2026 (Ano en curso).
-- **`scripts/`**: Carpeta donde se almacenan los archivos `.py` de analisis y procesamiento de datos. Los scripts se organizan para interactuar con los datos de cada subcarpeta dentro de `data_infraestructura/`.
-- **`output/`**: El unico directorio donde deberas exportar los resultados, shapes procesados, mapas, archivos CSV o reportes finales.
+```
+intervenciones_Infraestructura_2024_2026/
+├── agente/
+│   └── contexto.md              -> Este archivo (instrucciones y contexto)
+├── data_infraestructura/
+│   ├── 2024/                    -> Insumos del ano 2024
+│   ├── 2025/                    -> Insumos del ano 2025
+│   ├── 2026/                    -> Insumos del ano 2026 (ano en curso)
+│   └── fwdenvioshape...zip      -> Archivo original recibido (comprimido general)
+├── scripts/                     -> Scripts .py de analisis y procesamiento
+├── output/                      -> Resultados, graficos, reportes exportados
+├── .gitignore
+└── README.md
+```
 
 ---
 
 ## 3. Formato de Insumos y Politicas de Git
 
-Para la manipulacion de archivos y la gestion del repositorio Git, debes seguir estas reglas mandatorias:
+Reglas mandatorias:
 
-1. **Formato de Almacenamiento:** La informacion geografica original (capas vectoriales) se encuentra compactada en archivos con extension **`.zip`**.
-2. **Analisis de Datos:** Cada archivo `.zip` contiene internamente la informacion geografica completa en formato **SHP** (archivos `.shp`, `.shx`, `.dbf`, `.prj`, etc.). Tu flujo de analisis de datos debe incluir la lectura directa o la descompresion programatica de estos archivos `.zip` para extraer y procesar los SHP.
-3. **Control de Versiones (Git):** Los archivos de datos que se subiran y gestionaran dentro del repositorio Git seran exclusivamente los archivos **`.zip`** (para mantener agrupados los componentes del Shapefile y optimizar el espacio en el repositorio). No se deben subir los archivos `.shp` descomprimidos individualmente a Git a menos que se indique lo contrario.
+1. **Formato de Almacenamiento:** La informacion geografica original se encuentra en archivos **`.zip`**.
+2. **Analisis de Datos:** Cada `.zip` contiene un SHP completo (`.shp`, `.shx`, `.dbf`, `.prj`, etc.). El flujo debe incluir lectura directa o descompresion programatica.
+3. **Control de Versiones (Git):** Solo se suben los **`.zip`** al repositorio. No subir archivos `.shp` descomprimidos.
+4. **Sin emojis ni imagenes:** Los archivos `.py` y `.md` NO deben contener emojis ni caracteres de imagen. Solo texto plano y markdown estandar.
 
 ---
 
 ## 4. Directrices de Ejecucion
 
-1. **Consistencia Temporal:** Cuando se te asigne una tarea, verifica a que ano (2024, 2025 o 2026) corresponde el analisis para apuntar a la subcarpeta correcta dentro de `data_infraestructura/`.
-2. **Clean Code y Documentacion:** Todo script de procesamiento geografico (por ejemplo, usando `geopandas` para leer directamente desde el `.zip`) debe estar optimizado y documentado.
-3. **Sin emojis ni imagenes:** Los archivos `.py` y `.md` del proyecto NO deben contener emojis ni caracteres de imagen. Solo texto plano y markdown estandar.
+1. **Consistencia Temporal:** Verificar a que ano (2024, 2025 o 2026) corresponde cada tarea para apuntar a la subcarpeta correcta.
+2. **Clean Code y Documentacion:** Todo script debe estar documentado, optimizado y con manejo correcto de CRS.
+3. **Exportacion:** Todo resultado va a `output/` exclusivamente.
 
 ---
 
 ## 5. Herramientas Disponibles en el PC
 
-- **uv**: Instalado y disponible como gestor de paquetes y entornos Python. Usar `uv` para instalar dependencias y ejecutar scripts.
+- **uv**: Gestor de paquetes y entornos Python. Usar `uv pip install` para dependencias.
+- **Python**: Con geopandas, pandas, matplotlib instalados.
+- **Git**: Configurado y conectado al repositorio remoto.
 
 ---
 
 ## 6. Repositorio
 
 - **GitHub:** https://github.com/j0rg3c45/-intervenciones_Infraestructura_2024_2026.git
-
----
+- **Branch principal:** main
 
 ---
 
 ## 7. Tarea Principal: Auditoria, Diagnostico de Calidad y EDA Estructurado
 
-Realizar una auditoria, diagnostico de calidad y Analisis Exploratorio de Datos (EDA) estructurado de los archivos contenidos en `data_infraestructura/`.
-
-Inspeccionar sistematicamente cada subcarpeta anual (2024, 2025, 2026) y analizar individualmente los archivos espaciales y tabulares que contienen.
-
-Para cada archivo analizado, ejecutar y reportar los siguientes puntos de control:
+Realizar una auditoria y EDA de los archivos en `data_infraestructura/`. Puntos de control:
 
 ### 7.1 Informacion General del Archivo
 
-- Nombre y extension del archivo.
-- Sistema de Referencia de Coordenadas (CRS / Proyeccion) identificado y si es el correcto para la zona de estudio.
-- Tipo de geometria (Punto, Linea, Poligono, Raster, o Tabla no espacial).
+- Nombre, extension, CRS, tipo de geometria.
 
 ### 7.2 Inventario de la Tabla de Atributos
 
-- Generar un inventario/diccionario detallado con los nombres de todos los atributos (columnas) y su tipo de datos.
+- Nombres de columnas y tipos de datos.
 
 ### 7.3 Analisis Exploratorio y Calidad Alfanumerica
 
-- Identificar la presencia de valores vacios (Nulls/NaNs) o campos incompletos en la tabla de atributos.
-- Detectar registros o filas completamente duplicadas a nivel de atributos (mismos datos tabulares).
+- Valores nulos, campos incompletos, duplicados tabulares.
 
 ### 7.4 Analisis de Duplicidad Espacial y Topologica
 
-- Identificar "valores espaciales repetidos": registros que compartan exactamente la misma posicion geometrica (coordenadas superpuestas) y que ademas tengan los mismos atributos.
-- Marcar, contabilizar o reportar la existencia de estas redundancias espaciales para su posterior depuracion.
+- Geometrias repetidas, redundancias espaciales.
 
 ### 7.5 Formato de Salida
 
-- Estructurar el diagnostico final utilizando un formato claro, limpio y organizado (tablas o listas jerarquicas ordenadas por ano).
-- Los reportes se exportan a `output/`.
+- Tablas y listas jerarquicas ordenadas por ano, exportadas a `output/`.
 
 ---
 
----
+## 8. Scripts Generados
 
-## 8. Graficos y Visualizaciones Generadas
-
-Script: `scripts/graficos_eda_infraestructura.py`
-
-Archivos exportados en `output/`:
-
-| Archivo                              | Contenido                                                    |
-|--------------------------------------|--------------------------------------------------------------|
-| grafico_registros_por_ano.png        | Barras con total de intervenciones por ano                   |
-| grafico_tipo_intervencion.png        | Barras horizontales con tipos de intervencion por ano        |
-| grafico_estado_obras.png             | Tortas con distribucion de estado de obras por ano           |
-| grafico_nulidad_campos.png           | Heatmap de porcentaje de nulidad por campo y ano             |
-| grafico_top_comunas.png              | Top 10 comunas con mas intervenciones por ano                |
-| grafico_grupo_normativo.png          | Distribucion por grupo normativo y ano                       |
-| tabla_resumen_consolidada.txt        | Tabla comparativa de metricas clave entre los 3 anos         |
+| Script                              | Funcion                                              |
+|-------------------------------------|------------------------------------------------------|
+| eda_data_infraestructura.py         | EDA basico: CRS, nulos, duplicados, resumen CSV      |
+| analisis_capas_infraestructura.py   | Analisis detallado de capas, temporalidad, cobertura |
+| analisis_capas_con_tablas.py        | Reporte con tablas formateadas para interpretacion   |
+| graficos_eda_infraestructura.py     | Graficos de barras, tortas, heatmaps del EDA         |
 
 ---
 
-**Estado del Agente:** EDA completado, graficos generados y exportados. En espera de nuevas instrucciones.
+## 9. Outputs Generados
+
+| Archivo                              | Contenido                                            |
+|--------------------------------------|------------------------------------------------------|
+| resumen_eda_infraestructura.csv      | CSV con metricas clave por ano                       |
+| analisis_capas_infraestructura.txt   | Reporte completo con 10 tablas formateadas           |
+| hallazgos_analisis_capas.md          | Hallazgos y recomendaciones para solicitud formal    |
+| tabla_resumen_consolidada.txt        | Tabla comparativa de metricas entre los 3 anos       |
+| grafico_registros_por_ano.png        | Barras: total de intervenciones por ano              |
+| grafico_tipo_intervencion.png        | Barras horizontales: tipos de intervencion por ano   |
+| grafico_estado_obras.png             | Tortas: distribucion de estado por ano               |
+| grafico_nulidad_campos.png           | Heatmap: porcentaje de nulidad por campo y ano       |
+| grafico_top_comunas.png              | Top 10 comunas con mas intervenciones por ano        |
+| grafico_grupo_normativo.png          | Distribucion por grupo normativo y ano               |
+
+---
+
+## 10. Hallazgos Clave del EDA
+
+- CRS no homogeneo: 2025 en EPSG:6249, los demas en EPSG:4326.
+- 5 campos 100% vacios en los 3 anos (fuente_fin, fecha_inau, clase_up, descripcio, Observacio).
+- Esquema de columnas variable (35, 34, 37).
+- 2 duplicados tabulares en 2025.
+- 0 duplicados espaciales en todos los anos.
+- Cubrimiento: municipio de Santiago de Cali (Comunas 01-22).
+- Tipo de geometria: LineString (intervenciones viales).
+
+---
+
+**Estado del Agente:** EDA completado, graficos y reportes generados. En espera de nuevas instrucciones.
