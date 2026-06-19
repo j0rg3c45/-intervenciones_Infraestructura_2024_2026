@@ -89,12 +89,21 @@ Realizar una auditoria y EDA de los archivos en `data_infraestructura/`. Puntos 
 
 ## 8. Scripts Generados
 
-| Script                              | Funcion                                              |
-|-------------------------------------|------------------------------------------------------|
-| eda_data_infraestructura.py         | EDA basico: CRS, nulos, duplicados, resumen CSV      |
-| analisis_capas_infraestructura.py   | Analisis detallado de capas, temporalidad, cobertura |
-| analisis_capas_con_tablas.py        | Reporte con tablas formateadas para interpretacion   |
-| graficos_eda_infraestructura.py     | Graficos de barras, tortas, heatmaps del EDA         |
+### eda_data_infraestructura.py
+
+Primer script de diagnostico. Lee los 3 shapefiles y ejecuta los 4 puntos de control del EDA: informacion general (CRS, geometria, registros), inventario de atributos (columnas y tipos), calidad alfanumerica (nulos, vacios, duplicados tabulares) y duplicidad espacial (geometrias repetidas). Exporta un CSV resumen a `output/resumen_eda_infraestructura.csv` con las metricas clave por ano.
+
+### analisis_capas_infraestructura.py
+
+Analisis profundo orientado a responder que capas, datos, temporalidad y cubrimiento contienen los shapes. Extrae: bounding box, rangos de fechas, valores unicos de campos tematicos (tipo_inter, estado, comuna, grupo normativo), porcentaje de llenado por campo, y genera una sintesis con problemas detectados y recomendaciones para solicitud formal. Exporta a `output/analisis_capas_infraestructura.txt`.
+
+### analisis_capas_con_tablas.py
+
+Version mejorada del analisis anterior. Genera el mismo reporte pero con 10 tablas formateadas con bordes de texto para facilitar la lectura: informacion general, cubrimiento, temporalidad, tipos de intervencion, estado de obras, top comunas, grupo normativo, nulidad con diagnostico (ELIMINAR/REVISAR/OK), duplicidad y esquema comparativo de columnas. Sobreescribe `output/analisis_capas_infraestructura.txt`.
+
+### graficos_eda_infraestructura.py
+
+Genera 6 graficos PNG con matplotlib para visualizar los resultados del EDA: barras de registros por ano, barras horizontales de tipos de intervencion, tortas de estado de obras, heatmap de nulidad por campo, top 10 comunas por ano, y distribucion por grupo normativo. Tambien genera `output/tabla_resumen_consolidada.txt`. Todos los graficos se exportan a `output/`.
 
 ---
 
